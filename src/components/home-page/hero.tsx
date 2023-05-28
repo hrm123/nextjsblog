@@ -13,8 +13,8 @@ export const Hero: FC<HeroProps> = ({  }) => {
         </section>
         <section className=" place-self-center md:place-self-start flex-auto flex-grow">
             <div className="place-self-start p-10">
-                <h1>Hi</h1>
-                <p>blog about development</p>
+                <h1 className='mb-0 text-5xl font-bold'>Hi, I am Bestc0der</h1>
+                <p className="pt-10">I blog about development using Microsoft/Javascript stacks</p>
             </div>
         </section>
     </section>
