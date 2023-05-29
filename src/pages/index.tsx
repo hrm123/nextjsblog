@@ -3,6 +3,7 @@ import Hero from "@/components/home-page/hero";
 import { Fragment, useEffect } from "react";
 import FeaturedPosts from '@/components/home-page/featured';
 import { Post } from '@/components/types/post';
+import { getFeaturedPosts } from '../../lib/posts.util';
 
 
 const dummy_posts: Post[] = [
@@ -21,19 +22,31 @@ const dummy_posts: Post[] = [
     
 ]
 
-function HomePage(){
+function HomePage({posts}: {posts: any}){
     useEffect(()=>{
         document.getElementById('__next')?.classList.add('nextElementStyle')
     })
 
+    // console.log({posts})
     return(
         <section className="min-w-full h-full md:col-count-2 col-gap-8">
             <section className="flex-col">
                 <Hero />
-                <FeaturedPosts posts={dummy_posts} />
+                <FeaturedPosts posts={posts} />
             </section>
         </section>
     )
+}
+
+
+export function getStaticProps(){
+    const featuredPosts = getFeaturedPosts()
+    return {
+        props: {
+            posts: featuredPosts
+        },
+        revalidate: 60 // prod app will refresh fetch posts every 60 seconds
+    }
 }
 
 export default HomePage

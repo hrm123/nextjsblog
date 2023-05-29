@@ -15,9 +15,10 @@ const PostItem: FC<PostItemProps> = ({ post   }) => {
         year:'numeric'
     })
 
+    
     const imagePath = `/images/posts/${slug}/${image}`
     const linkPath = `/posts/${slug}`
-
+    // console.log({imagePath})
 
   return (
     <li className="p-3 m-3 shadow-small border-gray-600 border-2">

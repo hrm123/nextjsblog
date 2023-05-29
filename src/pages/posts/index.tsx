@@ -2,9 +2,10 @@ import AllPosts from '@/components/posts/all-posts';
 import { Post } from '@/components/types/post';
 import Head from 'next/head';
 import React, { FC } from 'react'
+import { getAllPosts } from '../../../lib/posts.util';
 
 interface AllPostsPageProps {
-   
+   posts: Post[]
 }
 
 
@@ -25,7 +26,7 @@ const dummy_posts: Post[] = [
     
 ]
 
-const AllPostsPage: FC<AllPostsPageProps> = ({   }) => {
+const AllPostsPage: FC<AllPostsPageProps> = ({ posts  }) => {
   return (
     <>
     <Head>
@@ -35,9 +36,21 @@ const AllPostsPage: FC<AllPostsPageProps> = ({   }) => {
         content='A list of all programming-related tutorials and posts!'
       />
     </Head>
-    <AllPosts posts={dummy_posts} />
+    <AllPosts posts={posts} />
   </>
   )
 }
+
+
+export function getStaticProps() {
+    const allPosts = getAllPosts()
+      return {
+        props: {
+          posts: allPosts,
+        },
+      };
+    }
+
+    
 
 export default AllPostsPage;

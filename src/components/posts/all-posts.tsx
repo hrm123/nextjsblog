@@ -25,24 +25,13 @@ const dummy_posts: Post[] = [
 ]
 
 const AllPosts: FC<AllPostsProps> = ({ posts }) => {
-    console.log({posts})
   return (
     <section>
         <h1>AllPosts</h1>
-        <Grid posts={dummy_posts}/>
+        <Grid posts={posts}/>
     </section>
   )
 }
 
 
-/*
-export function getStaticProps() {
-  
-    return {
-      props: {
-        posts: dummy_posts,
-      },
-    };
-  }
-*/
 export default AllPosts;
