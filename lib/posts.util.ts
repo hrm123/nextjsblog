@@ -4,11 +4,11 @@ import path from 'path'
 
 const postsDirectory = path.join(process.cwd(), 'posts')
 
-function getPostDetails(fileName: string){
-    const filePath = path.join(postsDirectory, fileName)
+export function getPostDetails(postIdentifier: string){
+    const postSlug = postIdentifier.replace(/\.md$/, '') // remove file extension
+    const filePath = path.join(postsDirectory, `${postSlug}.md`)
     const postFile = fs.readFileSync(filePath, 'utf-8')
     const {data, content} = matter(postFile);
-    const postSlug = fileName.replace(/\.md$/, '') // remove file extension
     const postDetails = {
         slug: postSlug,
         ...data,
@@ -17,8 +17,12 @@ function getPostDetails(fileName: string){
     return postDetails
 }
 
+export function getAllPostsFiles(){
+    return fs.readdirSync(postsDirectory)
+}
+
 export function getAllPosts(){
-    const postFiles = fs.readdirSync(postsDirectory)
+    const postFiles = getAllPostsFiles()
     const allPostDetails = postFiles.map(file => getPostDetails(file))
     return allPostDetails.sort((a: any,b: any) => a.date > b.date ? -1 : 1)
 }

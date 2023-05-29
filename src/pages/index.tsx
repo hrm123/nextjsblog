@@ -27,7 +27,6 @@ function HomePage({posts}: {posts: any}){
         document.getElementById('__next')?.classList.add('nextElementStyle')
     })
 
-    // console.log({posts})
     return(
         <section className="min-w-full h-full md:col-count-2 col-gap-8">
             <section className="flex-col">
