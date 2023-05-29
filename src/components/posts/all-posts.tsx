@@ -1,10 +1,9 @@
-import AllPosts from '@/components/posts/all-posts';
-import { Post } from '@/components/types/post';
-import Head from 'next/head';
 import React, { FC } from 'react'
+import Grid from './grid';
+import { Post } from '../types/post';
 
-interface AllPostsPageProps {
-   
+interface AllPostsProps {
+  posts: Post[]
 }
 
 
@@ -25,19 +24,25 @@ const dummy_posts: Post[] = [
     
 ]
 
-const AllPostsPage: FC<AllPostsPageProps> = ({   }) => {
+const AllPosts: FC<AllPostsProps> = ({ posts }) => {
+    console.log({posts})
   return (
-    <>
-    <Head>
-      <title>All Posts</title>
-      <meta
-        name='description'
-        content='A list of all programming-related tutorials and posts!'
-      />
-    </Head>
-    <AllPosts posts={dummy_posts} />
-  </>
+    <section>
+        <h1>AllPosts</h1>
+        <Grid posts={dummy_posts}/>
+    </section>
   )
 }
 
-export default AllPostsPage;
+
+/*
+export function getStaticProps() {
+  
+    return {
+      props: {
+        posts: dummy_posts,
+      },
+    };
+  }
+*/
+export default AllPosts;

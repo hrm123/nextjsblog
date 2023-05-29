@@ -9,7 +9,7 @@ const Layout: FC<LayoutProps> = (props) => {
   return (
     <>
         <Nav></Nav>
-        <main>{props.children}</main>
+        <main className='h-full'>{props.children}</main>
     </>
   )
 }
